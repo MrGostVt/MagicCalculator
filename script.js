@@ -1,7 +1,9 @@
+//TODO: Add scaling to numbers in viewport
+
 const values = [["Plus", "Minus", "Equals", "Divide", "Multiply", "Point"], ["+","-","=","/","X","."]];
 const view = {
     elem: document.getElementById("viewport"),
-    content: [],
+    content: [""],
 };
 function Multiply(a,b){
     return (a*b);
@@ -42,7 +44,12 @@ function sizeUpdate(){
         elem.style.fontSize = (width * 0.625).toString() + "px";
         elem.style.lineHeight = width + "px";
     }
+
 }
+function isNumber(number){
+    return parseFloat(number) === 0? true :Boolean(parseFloat(number));
+}
+let isFirst = true;
 function addEvents(){
     const buttons = document.getElementsByClassName("Button");
     for(elem of buttons){
@@ -52,11 +59,11 @@ function addEvents(){
             const ch = find(temp.id.split("button")[1]);
             const len = view.content.length;
             if(ch !== "="){
-                if(Boolean(parseFloat(view.content[len-1])) || Boolean(parseFloat(ch)))
+                if(((Boolean(parseFloat(view.content[len-1])) || Boolean(parseFloat(ch))) || ch === '0' || ch === '.') && !isFirst)
                 {
-                    if((!Boolean(parseFloat(ch)) || !Boolean(parseFloat(view.content[len-1]))) && ch !=='.'){
+
+                    if(!isNumber(view.content[len-1]) || !isNumber(ch) && (ch !== '.' && isNumber(view.content[len-1]))){
                         view.content.push(ch);
-                        
                     }
                     else{
                         view.content[len-1] += ch;
@@ -65,6 +72,7 @@ function addEvents(){
                 }               
                 else{
                     view.content[len-1] = (ch);
+                    isFirst = false;
                 }
                 
             }
@@ -119,6 +127,8 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("viewport").addEventListener("click", function(){
         view.content.splice(0, view.content.length);
         view.elem.textContent = view.content.join("")
+        view.content.push("");
+        isFirst = true;
     });
 });
 

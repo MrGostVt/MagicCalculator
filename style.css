@@ -4,7 +4,8 @@
     height: 45vw;
     /* height: 50%; */
     margin: auto;
-    background-color: rgb(157, 187, 187);
+    /* background-color: rgb(157, 187, 187); */
+    background-color: rgb(83, 83, 83);
     border-radius: 12px;
 }
 #viewport{
@@ -13,7 +14,7 @@
     height: 8vw;
     left: 2.5%;
     top: 2.5%;
-    background-color: aqua;
+    background-color:rgb(124, 223, 223);
     text-align: right;
     font-size: 100px;
     line-height: 160px;
@@ -26,7 +27,7 @@
     display: inline-block;
     width: 8vw;
     height: 8vw;
-    background-color: brown;
+    background-color: gray;
     top: 3%;
     left: 3.5%;
     margin-top: 1.5%;
@@ -35,9 +36,19 @@
     line-height: 160px;
     font-family: 'Calculator', sans-serif;
     cursor:default;
-    
+}
+#viewport:hover{
+    transition: .3s;
+    background-color:cornflowerblue;
 }
 .Button:hover{
     transition: .3s;
-    background-color: aqua;
+    background-color: darkgray;
+}
+#buttonEquals{
+    background-color: orangered;
+}
+#buttonEquals:hover{
+    transition: .3s;
+    background-color: orange;
 }
