@@ -83,7 +83,7 @@ function addEvents(){
                 for(let i = 0; i < view.content.length; i++){
                     // if(!Boolean(parseInt(view.content[i])) && j !== 0 ){
                     if(view.content[i] === que[0] && j !== 0){
-                        result = findFunc(view.content[i])(parseFloat(view.content[i-1]), parseFloat(view.content[i+1]));
+                        result = findFunc(view.content[i])(parseFloat(view.content[i-1]), parseFloat(view.content[i+1])).toFixed(2);
                         view.content[i+1] = result.toString();
                         view.content.splice(i-1, 2);
                         i = 0;
